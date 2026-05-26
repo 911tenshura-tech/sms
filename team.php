@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once 'connection/db.php';
 $teachers = [];
 if (isset($pdo)) {
     try {
@@ -198,8 +198,11 @@ if (isset($pdo)) {
                                     <?php if ($teacher['t_sanketno']): ?>
                                         <span><i class="fa-solid fa-address-card"></i> Sanket No: <?php echo htmlspecialchars($teacher['t_sanketno']); ?></span>
                                     <?php endif; ?>
-                                    <?php if ($teacher['t_address']): ?>
-                                        <span><i class="fa-solid fa-house"></i> <?php echo htmlspecialchars($teacher['t_address']); ?></span>
+                                    <?php if (!empty($teacher['t_temporaryaddress'])): ?>
+                                        <span><i class="fa-solid fa-house"></i> Temp Address: <?php echo htmlspecialchars($teacher['t_temporaryaddress']); ?></span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($teacher['t_permanentaddress'])): ?>
+                                        <span><i class="fa-solid fa-building"></i> Perm Address: <?php echo htmlspecialchars($teacher['t_permanentaddress']); ?></span>
                                     <?php endif; ?>
                                 </div>
                             </div>

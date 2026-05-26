@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header("Location: login.php");
     exit;
 }
-require_once '../connecion/db.php';
+require_once '../connection/db.php';
 
 $id = $_GET['id'] ?? null;
 if ($id) {
@@ -16,8 +16,8 @@ if ($id) {
 
         if ($teacher) {
             // Delete the physical profile image if it exists
-            if (!empty($teacher['t_image']) && file_exists('assets/uploads/teachers/' . $teacher['t_image'])) {
-                unlink('assets/uploads/teachers/' . $teacher['t_image']);
+            if (!empty($teacher['t_image']) && file_exists('../assets/uploads/teachers/' . $teacher['t_image'])) {
+                unlink('../assets/uploads/teachers/' . $teacher['t_image']);
             }
 
             // Delete database record

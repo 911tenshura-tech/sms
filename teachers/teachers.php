@@ -160,18 +160,18 @@ try {
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <img src="assets/logo.png" alt="Logo" class="logo-img small">
-                <h2>M.M.S.S</h2>
+              <a href="../admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
+                <h2>M.M.S.S</h2></a>
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
-            <ul class="sidebar-menu">
-                <li class="active"><a href="#"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+             <ul class="sidebar-menu">
+                <li><a href="../admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
-                <li><a href="teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+                <li class="active"><a href="teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
-                <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
+                <li><a href="../admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
             </ul>
         </aside>
 
@@ -186,9 +186,9 @@ try {
                 </div>
                 <div class="header-right">
                     <div class="admin-profile">
-                        <img src="assets/principal.jpg" alt="Admin" class="avatar">
+                        <img src="../assets/principal.jpg" alt="Admin" class="avatar">
                         <span class="admin-name">Admin User</span>
-                        <button class="logout-btn" onclick="location.href='logout.php'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                        <button class="logout-btn" onclick="location.href='../logout.php'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
                     </div>
                 </div>
             </header>
@@ -205,7 +205,7 @@ try {
                 <div class="panel">
                     <div class="panel-header">
                         <h3><i class="fa-solid fa-chalkboard-user"></i> Teachers Directory</h3>
-                        <a href="teachers/add_teacher.php" class="add-btn"><i class="fa-solid fa-user-plus"></i> Add New Teacher</a>
+                        <a href="add_teacher.php" class="add-btn"><i class="fa-solid fa-user-plus"></i> Add New Teacher</a>
                     </div>
 
                     <div class="table-responsive">
@@ -233,8 +233,8 @@ try {
                                     <?php foreach ($teachers as $teacher): ?>
                                         <tr>
                                             <td>
-                                                <?php if (!empty($teacher['t_image']) && file_exists('assets/uploads/teachers/' . $teacher['t_image'])): ?>
-                                                    <img src="assets/uploads/teachers/<?php echo htmlspecialchars($teacher['t_image']); ?>" alt="Avatar" class="teacher-avatar-sm">
+                                                <?php if (!empty($teacher['t_image']) && file_exists('../assets/uploads/teachers/' . $teacher['t_image'])): ?>
+                                                    <img src="../assets/uploads/teachers/<?php echo htmlspecialchars($teacher['t_image']); ?>" alt="Avatar" class="teacher-avatar-sm">
                                                 <?php else: ?>
                                                     <div class="teacher-avatar-placeholder">
                                                         <i class="fa-solid fa-chalkboard-user"></i>

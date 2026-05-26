@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $t_lastname = $_POST['t_lastname'] ?? '';
     $t_status = $_POST['t_status'] ?? 'Active';
     $t_sanketno = $_POST['t_sanketno'] ?? '';
-    $t_address = $_POST['t_address'] ?? '';
+    $t_temporaryaddress = $_POST['t_temporaryaddress'] ?? '';
+    $t_permanentaddress = $_POST['t_permanentaddress'] ?? '';
     $t_gender = $_POST['t_gender'] ?? '';
     $t_email = $_POST['t_email'] ?? '';
     $t_province = $_POST['t_province'] ?? '';
@@ -54,13 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // unique file name
             $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-            $uploadFileDir = 'assets/uploads/teachers/';
+            $uploadFileDir = '../assets/uploads/teachers/';
             $dest_path = $uploadFileDir . $newFileName;
             
             if(move_uploaded_file($fileTmpPath, $dest_path)) {
                 // Delete old image if it exists
-                if (!empty($teacher['t_image']) && file_exists('assets/uploads/teachers/' . $teacher['t_image'])) {
-                    unlink('assets/uploads/teachers/' . $teacher['t_image']);
+                if (!empty($teacher['t_image']) && file_exists('../assets/uploads/teachers/' . $teacher['t_image'])) {
+                    unlink('../assets/uploads/teachers/' . $teacher['t_image']);
                 }
                 $t_image = $newFileName;
             } else {
@@ -80,7 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     t_image = :image, 
                     t_status = :status, 
                     t_sanketno = :sanketno, 
-                    t_address = :address, 
+                    t_temporaryaddress = :temporaryaddress, 
+                    t_permanentaddress = :permanentaddress, 
                     t_gender = :gender, 
                     t_email = :email, 
                     t_province = :province 
@@ -94,7 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':image' => $t_image,
                 ':status' => $t_status,
                 ':sanketno' => $t_sanketno,
-                ':address' => $t_address,
+                ':temporaryaddress' => $t_temporaryaddress,
+                ':permanentaddress' => $t_permanentaddress,
                 ':gender' => $t_gender,
                 ':email' => $t_email,
                 ':province' => $t_province,
@@ -126,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="stylesheet" href="../style.css?v=1.2">
     <style>
         .form-panel {
             background: var(--bg-white);
@@ -254,18 +257,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <img src="assets/logo.png" alt="Logo" class="logo-img small">
-                <h2>M.M.S.S</h2>
+                <a href="../admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
+                <h2>M.M.S.S</h2></a>
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
             <ul class="sidebar-menu">
-                <li class="active"><a href="#"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+                <li><a href="../admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
-                <li><a href="teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+                <li class="active"><a href="teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
-                <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
+                <li><a href="../admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
             </ul>
         </aside>
 
@@ -280,9 +283,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="header-right">
                     <div class="admin-profile">
-                        <img src="assets/principal.jpg" alt="Admin" class="avatar">
+                        <img src="../assets/principal.jpg" alt="Admin" class="avatar">
                         <span class="admin-name">Admin User</span>
-                        <button class="logout-btn" onclick="location.href='logout.php'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                        <button class="logout-btn" onclick="location.href='../logout.php'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
                     </div>
                 </div>
             </header>
@@ -362,15 +365,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
 
                             <div class="form-group full-width">
-                                <label for="t_address">Full Address</label>
-                                <input type="text" id="t_address" name="t_address" value="<?php echo htmlspecialchars($teacher['t_address'] ?: ''); ?>">
+                                <label for="t_temporaryaddress">Temporary Address</label>
+                                <input type="text" id="t_temporaryaddress" name="t_temporaryaddress" value="<?php echo htmlspecialchars($teacher['t_temporaryaddress'] ?: ''); ?>">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="t_permanentaddress">Permanent Address</label>
+                                <input type="text" id="t_permanentaddress" name="t_permanentaddress" value="<?php echo htmlspecialchars($teacher['t_permanentaddress'] ?: ''); ?>">
                             </div>
 
                             <div class="form-group full-width">
                                 <label>Profile Image</label>
-                                <?php if (!empty($teacher['t_image']) && file_exists('assets/uploads/teachers/' . $teacher['t_image'])): ?>
+                                <?php if (!empty($teacher['t_image']) && file_exists('../assets/uploads/teachers/' . $teacher['t_image'])): ?>
                                     <div class="current-image-preview">
-                                        <img src="assets/uploads/teachers/<?php echo htmlspecialchars($teacher['t_image']); ?>" alt="Current Profile Picture">
+                                        <img src="../assets/uploads/teachers/<?php echo htmlspecialchars($teacher['t_image']); ?>" alt="Current Profile Picture">
                                         <div>
                                             <span style="font-weight: 500; font-size: 0.9rem; display: block; color: var(--text-dark);">Current File:</span>
                                             <span style="font-size: 0.8rem; color: var(--text-muted);"><?php echo htmlspecialchars($teacher['t_image']); ?></span>

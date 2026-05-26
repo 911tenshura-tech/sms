@@ -37,10 +37,6 @@
                 </div>
             </a>
 
-            <!-- Hamburger Menu Icon -->
-            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
 
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.php">Home</a></li>

@@ -4,6 +4,30 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header("Location: login.php");
     exit;
 }
+require_once 'connection/db.php';
+
+// Fetch Statistics
+$total_teachers = 0;
+$active_teachers = 0;
+$latest_teachers = [];
+
+if (isset($pdo)) {
+    try {
+        // Total Teachers
+        $stmt = $pdo->query("SELECT COUNT(*) as count FROM teachers");
+        $total_teachers = $stmt->fetch(PDO::FETCH_ASSOC)['count'] ?? 0;
+
+        // Active Teachers
+        $stmt = $pdo->query("SELECT COUNT(*) as count FROM teachers WHERE t_status = 'Active'");
+        $active_teachers = $stmt->fetch(PDO::FETCH_ASSOC)['count'] ?? 0;
+
+        // Fetch 5 Latest Teachers
+        $stmt = $pdo->query("SELECT * FROM teachers ORDER BY created_at DESC LIMIT 5");
+        $latest_teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        // Fallback in case of errors
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,14 +56,15 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <img src="assets/logo.png" alt="Logo" class="logo-img small">
-                <h2>M.M.S.S</h2>
+                <a href="admin.php"><img src="assets/logo.png" alt="Logo" class="logo-img small">
+                <h2>M.M.S.S</h2></a>
+                
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
             <ul class="sidebar-menu">
-                <li class="active"><a href="#"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
-                <li><a href="/sms/teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+                <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
@@ -81,7 +106,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                         <div class="metric-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
                         <div class="metric-info">
                             <p>Total Teachers</p>
-                            <h3>38 <span class="trend">active</span></h3>
+                            <h3><?php echo $total_teachers; ?> <span class="trend"><?php echo $active_teachers; ?> active</span></h3>
                         </div>
                     </div>
                     <!-- <div class="metric-card success-gradient">
@@ -106,11 +131,11 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                     <!-- Left Column -->
                     <div class="split-left">
 
-                        <!-- Active Student Records -->
+                        <!-- Active Teachers Records -->
                         <div class="panel">
                             <div class="panel-header">
                                 <h3>Active Teachers Records</h3>
-                                <button class="btn-sm"><i class="fa-solid fa-plus"></i> Add New</button>
+                                <button class="btn-sm" onclick="location.href='teachers/add_teacher.php'"><i class="fa-solid fa-plus"></i> Add New</button>
                             </div>
                             <div class="table-responsive">
                                 <table class="data-table">
@@ -119,57 +144,39 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                                             <th>#</th>
                                             <th>Sanket No</th>
                                             <th>Teacher Name</th>
-                                            <th>Classes</th>
+                                            <th>Province</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>101</td>
-                                            <td>Kamal Sharma</td>
-                                            <td>10,11,12</td>
-                                            <td><span class="badge active">Active</span></td>
-                                            <td>
-                                                <button class="action-btn view"
-                                                    onclick="showAlert('Viewing record for Kamal')"><i
-                                                        class="fa-solid fa-eye"></i></button>
-                                                <button class="action-btn edit"
-                                                    onclick="showAlert('Editing record for Kamal')"><i
-                                                        class="fa-solid fa-pen"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>102</td>
-                                            <td>Madan Shrestha</td>
-                                            <td>none</td>
-                                            <td><span class="badge active">Active</span></td>
-                                            <td>
-                                                <button class="action-btn view"
-                                                    onclick="showAlert('Viewing record for Madan')"><i
-                                                        class="fa-solid fa-eye"></i></button>
-                                                <button class="action-btn edit"
-                                                    onclick="showAlert('Editing record for Madan')"><i
-                                                        class="fa-solid fa-pen"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>205</td>
-                                            <td>Sandhya Ghimire</td>
-                                            <td>9,10,11,12</td>
-                                            <td><span class="badge active">Active</span></td>
-                                            <td>
-                                                <button class="action-btn view"
-                                                    onclick="showAlert('Viewing record for Sandhya')"><i
-                                                        class="fa-solid fa-eye"></i></button>
-                                                <button class="action-btn edit"
-                                                    onclick="showAlert('Editing record for Sandhya')"><i
-                                                        class="fa-solid fa-pen"></i></button>
-                                            </td>
-                                        </tr>
+                                        <?php if (empty($latest_teachers)): ?>
+                                            <tr>
+                                                <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 20px;">No teacher records found.</td>
+                                            </tr>
+                                        <?php else: ?>
+                                            <?php $count = 1; foreach ($latest_teachers as $teacher): ?>
+                                                <tr>
+                                                    <td><?php echo $count++; ?></td>
+                                                    <td><code><?php echo htmlspecialchars($teacher['t_sanketno'] ?: '-'); ?></code></td>
+                                                    <td><strong><?php echo htmlspecialchars($teacher['t_firstname'] . ($teacher['t_midname'] ? ' ' . $teacher['t_midname'] : '') . ' ' . $teacher['t_lastname']); ?></strong></td>
+                                                    <td><?php echo htmlspecialchars($teacher['t_province'] ?: '-'); ?></td>
+                                                    <td>
+                                                        <?php 
+                                                        $status = $teacher['t_status'] ?: 'Active';
+                                                        $badgeClass = 'badge active';
+                                                        if ($status === 'Inactive') $badgeClass = 'badge inactive';
+                                                        if ($status === 'On Leave') $badgeClass = 'badge on-leave';
+                                                        ?>
+                                                        <span class="<?php echo $badgeClass; ?>"><?php echo htmlspecialchars($status); ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <button class="action-btn view" onclick="location.href='teachers/teachers.php'"><i class="fa-solid fa-eye"></i></button>
+                                                        <button class="action-btn edit" onclick="location.href='teachers/edit_teacher.php?id=<?php echo $teacher['id']; ?>'"><i class="fa-solid fa-pen"></i></button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>

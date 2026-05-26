@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header("Location: login.php");
     exit;
 }
-require_once 'db.php';
+require_once 'connection/db.php';
 
 $success_msg = '';
 $error_msg = '';
@@ -309,7 +309,7 @@ try {
             <ul class="sidebar-menu">
                 <li><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
-                <li><a href="teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+                <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-school"></i> <span>Classes</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-clipboard-user"></i> <span>Attendance</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>

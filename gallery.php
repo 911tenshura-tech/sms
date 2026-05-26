@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once 'connection/db.php';
 $media_items = [];
 if (isset($pdo)) {
     try {

@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // unique file name
             $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-            $uploadFileDir = 'assets/uploads/teachers/';
+            $uploadFileDir = '../assets/uploads/teachers/';
             $dest_path = $uploadFileDir . $newFileName;
             
             if(move_uploaded_file($fileTmpPath, $dest_path)) {
@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($error_msg) && !empty($t_firstname) && !empty($t_lastname)) {
         try {
-            $sql = "INSERT INTO teachers (t_firstname, t_midname, t_lastname, t_image, t_status, t_sanketno, t_permanentaddress, t_temporary_address, t_gender, t_email, t_province) 
-                    VALUES (:firstname, :midname, :lastname, :image, :status, :sanketno, :permanentaddress,:temporaryaddress, :gender, :email, :province)";
+            $sql = "INSERT INTO teachers (t_firstname, t_midname, t_lastname, t_image, t_status, t_sanketno, t_permanentaddress, t_temporaryaddress, t_gender, t_email, t_province) 
+                    VALUES (:firstname, :midname, :lastname, :image, :status, :sanketno, :permanentaddress, :temporaryaddress, :gender, :email, :province)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
                 ':firstname' => $t_firstname,
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Teacher - Mahendra Maheshdev Secondary School</title>
+    <title>Add New Teacher - Mahendra Maheshdev Secondary School</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="stylesheet" href="../style.css?v=1.2">
     <style>
         .form-panel {
             background: var(--bg-white);
@@ -213,18 +213,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <img src="assets/logo.png" alt="Logo" class="logo-img small">
-                <h2>M.M.S.S</h2>
+                <a href="../admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
+                <h2>M.M.S.S</h2></a>
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
             <ul class="sidebar-menu">
-                <li class="active"><a href="#"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+                <li><a href="../admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
-                <li><a href="teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+                <li class="active"><a href="teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
-                <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
+                <li><a href="../admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
             </ul>
         </aside>
 
@@ -239,9 +239,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="header-right">
                     <div class="admin-profile">
-                        <img src="assets/principal.jpg" alt="Admin" class="avatar">
+                        <img src="../assets/principal.jpg" alt="Admin" class="avatar">
                         <span class="admin-name">Admin User</span>
-                        <button class="logout-btn" onclick="location.href='logout.php'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                        <button class="logout-btn" onclick="location.href='../logout.php'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
                     </div>
                 </div>
             </header>
@@ -325,13 +325,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             
                             <div class="form-group full-width">
-                                <label for="t_address">Temporary Address</label>
-                                <input type="text" id="t_address" name="t_address" placeholder="Enter complete Temporary address">
+                                <label for="t_temporaryaddress">Temporary Address</label>
+                                <input type="text" id="t_temporaryaddress" name="t_temporaryaddress" placeholder="Enter complete Temporary address">
                             </div>
 
                             <div class="form-group full-width">
-                                <label for="t_address">Permanent Address</label>
-                                <input type="text" id="t_address" name="t_address" placeholder="Enter complete permanent residential address">
+                                <label for="t_permanentaddress">Permanent Address</label>
+                                <input type="text" id="t_permanentaddress" name="t_permanentaddress" placeholder="Enter complete permanent residential address">
                             </div>
 
                             <div class="form-group full-width">
