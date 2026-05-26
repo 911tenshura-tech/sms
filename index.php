@@ -26,6 +26,12 @@
             <div class="contact-info">
                 <i class="fa-solid fa-phone"></i> +977 9999999999
             </div>
+            <div class="contact-info">
+                <i class="fa-solid fa-envelope"></i> info@mahendramaheshdev.edu.np
+            </div>
+        <div class="weather-info" id="weather">
+                Loading weather...
+        </div>
 
         </div>
 
@@ -250,7 +256,10 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom JS -->
-    <script src="script.js"></script>
+    <script src="script.js">
+ 
+    </script>
+    
 </body>
 
 </html>
