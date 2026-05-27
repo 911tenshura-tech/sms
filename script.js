@@ -165,26 +165,23 @@ function initCharts() {
     }
 }
 // Weather Widget Script and API connection
-
 async function getWeather() {
-
-    const apiKey = "YOUR_API_KEY";
-
-    const city = "Nuwakot";
-
-    const url =
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiKey = "263d2ae9ae61acc7be2a3f810c57a314";
+    const city = "mmss weather";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     try {
-
         const response = await fetch(url);
+        
+        // Handle API errors gracefully (like a 401 or 404)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
         const data = await response.json();
-
-        console.log(data);
+        console.log("API Response Data:", data);
 
         const temp = Math.round(data.main.temp);
-
         const weather = data.weather[0].main;
 
         // Default icon
@@ -202,17 +199,16 @@ async function getWeather() {
         }
 
         // Update HTML
-        document.getElementById("weather").innerHTML =
+        document.getElementById("weather").innerHTML = 
         `<i class="fa-solid ${icon}"></i> ${temp}°C, ${weather}`;
+        
+        console.log("Weather data fetched and DOM updated successfully.");
 
+    } catch(error) {
+        console.error("Weather Widget Error:", error);
+        document.getElementById("weather").innerText = "Weather unavailable";
     }
-    catch(error) {
-
-        console.log("Error:", error);
-
-    }
-
 }
 
-// Run function
+// Run the function exactly once on page load
 getWeather();

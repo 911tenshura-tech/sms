@@ -20,7 +20,7 @@
     <!-- ========================================== -->
     <!-- PUBLIC HOME PAGE VIEW                      -->
     <!-- ========================================== -->
-    <div>
+
 
         <div class="top-bar">
             <div class="contact-info">
@@ -121,9 +121,9 @@
                         <div class="program-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
                         <div class="program-info">
                             <h4>Secondary Level</h4>
-                            <p>Classes 6 to 10 focusing on holistic foundational growth.</p>
-                            <button class="outline-btn" onclick="showAlert('Secondary Admission Details')">Apply
-                                Now</button>
+                            <p>Classes 8 to 10 focusing on holistic foundational growth.</p>
+                            <button class="outline-btn" ><a href="admissions.php">Apply
+                                Now</a></button>
                         </div>
                     </div>
                     <div class="program-item">
@@ -131,18 +131,18 @@
                         <div class="program-info">
                             <h4>Technical and Vocational Education</h4>
                             <p>Classes 9-12 Computer Engineering Course.</p>
-                            <button class="outline-btn" onclick="showAlert('Secondary Admission Details')">Apply
-                                Now</button>
+                            <button class="outline-btn"> <a href="admissions.php">Apply
+                                Now</a></button>
                         </div>
                     </div>
                     <div class="program-item">
                         <div class="program-icon"><i class="fa-solid fa-microscope"></i></div>
                         <div class="program-info">
                             <h4>Upper Secondary Level</h4>
-                            <p>Classes 11 & 12 offering Computer Engineernig, Management, Computer Science, and
+                            <p>Classes 11 & 12 offering Management, Computer Science, and
                                 Education.</p>
-                            <button class="outline-btn" onclick="showAlert('Upper Secondary Admission Details')">Apply
-                                Now</button>
+                            <button class="outline-btn" ><a href="admissions.php">Apply
+                                Now</a></button>
                         </div>
                     </div>
                 </div>
@@ -243,6 +243,17 @@
             </div>
             <div class="footer-bottom">
                 <p>Our location: <a href="https://maps.app.goo.gl/SxXacD9EYP2rnC787">Google Maps</a></p><br>
+            <h3>Quick Links</h3>
+            <ul class="quick_links">
+                <li><a href="index.php" class="active">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="admissions.php">Admissions</a></li>
+                <li><a href="academics.php">Academics</a></li>
+                <li><a href="team.php">Team</a></li>
+                <li><a href="notices.php">Notices and Results</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
+            </ul>
                 <p>&copy; 2026 Mahendra Maheshdev Secondary School, Likhu Rural Municipality Ward no. 6, Nuwakot, Nepal.
                     All Rights Reserved.</p>
                 <div class="portal-link">

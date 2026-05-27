@@ -129,10 +129,16 @@ if (isset($pdo)) {
 <body>
     <div id="public-view" class="view active-view">
         <!-- Top Bar -->
-        <div class="top-bar">
+          <div class="top-bar">
             <div class="contact-info">
                 <i class="fa-solid fa-phone"></i> +977 9999999999
             </div>
+            <div class="contact-info">
+                <i class="fa-solid fa-envelope"></i> info@mahendramaheshdev.edu.np
+            </div>
+        <div class="weather-info" id="weather">
+                Loading weather...
+        </div>
 
         </div>
 
@@ -236,6 +242,18 @@ if (isset($pdo)) {
                 </div>
             </div>
             <div class="footer-bottom">
+                <p>Our location: <a href="https://maps.app.goo.gl/SxXacD9EYP2rnC787">Google Maps</a></p><br>
+            <h3>Quick Links</h3>
+            <ul class="quick_links">
+                <li><a href="index.php" class="active">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="admissions.php">Admissions</a></li>
+                <li><a href="academics.php">Academics</a></li>
+                <li><a href="team.php">Team</a></li>
+                <li><a href="notices.php">Notices and Results</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
+            </ul>
                 <p>&copy; 2026 Mahendra Maheshdev Secondary School, Likhu Rural Municipality Ward no. 6, Nuwakot, Nepal.
                     All Rights Reserved.</p>
                 <div class="portal-link">
