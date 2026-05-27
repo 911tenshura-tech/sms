@@ -44,6 +44,27 @@ if (isset($pdo)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css?v=1.1">
+    <style>
+        .nav-link {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+}
+.badge {
+    position: absolute;
+    top: 4px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    background-color: #e74c3c; /* Red */
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+.hidden { display: none; }
+    </style>
 </head>
 
 <body>
@@ -66,7 +87,7 @@ if (isset($pdo)) {
                 <li><a href="students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
                 <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
-                <li><a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
+                <li><a href="students/std_admission_form_view.php"><i class="fa fa-user-plus"></i> <span>Admissions</span><span id="notification-badge" class="badge hidden"></span></a></li>
                 <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
                 <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
             </ul>
@@ -251,6 +272,28 @@ if (isset($pdo)) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom JS -->
     <script src="script.js?v=1.1"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const badge = document.getElementById("notification-badge");
+
+            function checkNewAdmissions() {
+                // Points to the micro API checking database flags
+                fetch('students/check_notification.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.unread_count > 0) {
+                            badge.classList.remove('hidden');
+                        } else {
+                            badge.classList.add('hidden');
+                        }
+                    })
+                    .catch(error => console.error('Notification error:', error));
+            }
+
+            checkNewAdmissions();
+            setInterval(checkNewAdmissions, 10000); // Check every 10 seconds
+        });
+    </script>
 </body>
 
 </html>

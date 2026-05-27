@@ -52,8 +52,32 @@
                 </div>
             </header>
 
-             <h1>Students</h1>
-            <a href="student_admissions.php">Add New Student</a>
+             <div class="dashboard-content" style="padding: 20px;">
+                <h1 style="margin-bottom: 20px; color: #2c3e50;">Student Hub</h1>
+                <div class="analytics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    
+                    <a href="std_admission_form_view.php" style="text-decoration: none; color: inherit;">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+                            <div class="metric-icon" style="font-size: 2rem; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50%;"><i class="fa-solid fa-file-signature"></i></div>
+                            <div class="metric-info">
+                                <h3 style="margin: 0; font-size: 1.2rem;">Applicant Dashboard</h3>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9;">Review and process new admission forms</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="../student_admissions.php" style="text-decoration: none; color: inherit;">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+                            <div class="metric-icon" style="font-size: 2rem; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50%;"><i class="fa-solid fa-user-plus"></i></div>
+                            <div class="metric-info">
+                                <h3 style="margin: 0; font-size: 1.2rem;">Add New Student</h3>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9;">Manually register a new student</p>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
         </div>
     </div>
 </body>

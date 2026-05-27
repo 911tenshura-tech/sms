@@ -1,15 +1,17 @@
 <?php
-$host = 'localhost';
-$dbname = 'sms_db';
+$host     = 'localhost';
+$dbname   = 'sms_db';
 $username = 'root';
 $password = '';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // Set the PDO error mode to exception
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    // Throw exceptions on DB errors instead of silent failures
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    // If the database does not exist, we will try to create it below (used during setup)
-    // Normally you would just fail here if it's purely a connection script
+    // Return associative arrays by default
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // Always report connection failures — never swallow this silently
+    die("Database connection failed: " . $e->getMessage());
 }
 ?>

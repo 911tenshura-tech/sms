@@ -125,21 +125,57 @@ button {
     color: var(--text-muted);
 }
 
+/* 1. Main Nav Container */
 .nav-links {
     display: flex;
     gap: 20px;
 }
 
+/* 2. Individual Links */
 .nav-links a {
     font-weight: 500;
     color: var(--text-dark);
-    padding: 5px 0;
+    padding: 8px 0;        /* Top ra Bottom ma space badhauna padding thapeko */
+    text-decoration: none;
+    position: relative;    /* Yo top/bottom line lock garna dherai important xa */
+    display: inline-block;
 }
 
+/* 3. Common Styles: Top (::before) ra Bottom (::after) duitai ko lagi */
+.nav-links a::before,
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;             /* Shuru ma duitai line ko width zero hunxa */
+    height: 2px;          /* Line ko thickness */
+    background: var(--primary-color);
+    transition: width 0.3s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Top line (::before) ko position fix gareko */
+.nav-links a::before {
+    top: 0;
+    right: 0;
+}
+
+/* Bottom line (::after) ko position fix gareko */
+.nav-links a::after {
+    bottom: 0;
+    left: 0;             /* Tapai le right ko thau ma left: 0; halnu bhane dual animation dekhinxa */
+}
+
+/* 4. Hover huda ra Active huda top-bottom duitai line full (100%) banaune */
+.nav-links a:hover::before,
+.nav-links a:hover::after,
+.nav-links a.active::before,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Hover ra Active huda text color change garna */
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
 }
 
 @media (max-width: 768px) {
