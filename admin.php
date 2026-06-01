@@ -87,7 +87,7 @@ if (isset($pdo)) {
                 <li><a href="students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
                 <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
-                <li><a href="students/std_admission_form_view.php"><i class="fa fa-user-plus"></i> <span>Admissions</span><span id="notification-badge" class="badge hidden"></span></a></li>
+                <li><a href="fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
                 <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
             </ul>

@@ -66,6 +66,12 @@
             </section>
         </main>
 
+        <div class="fees-section" style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+            <h3>Pay Fees Online</h3>
+            <p>Make your fee payments conveniently through our online portal.</p> <br> 
+            <a href="fees.php" class="btn" style="text-decoration: underline; color: #fff; background-color: #3498db; padding: 10px 20px; border-radius: 5px;">Pay Now</a>
+        </div>
+
         <!-- Footer -->
         <footer class="public-footer">
             <div class="footer-grid">
