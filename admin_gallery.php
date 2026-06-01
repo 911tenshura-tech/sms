@@ -302,18 +302,19 @@ try {
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <img src="assets/logo.png" alt="Logo" class="logo-img small">
-                <h2>M.M.S.S</h2>
+                <a href="admin.php"><img src="assets/logo.png" alt="Logo" class="logo-img small">
+                <h2>M.M.S.S</h2></a>
+                
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
             <ul class="sidebar-menu">
-                <li class="active"><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+                <li><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
                 <li><a href="students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
                 <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
                 <li><a href="student_admissions.php"><i class="fa fa-user-plus"></i> <span>Admissions</span><span id="notification-badge" class="badge hidden"></span></a></li>
                 <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
-                <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
+                <li class="active"><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
             </ul>
         </aside>
 
