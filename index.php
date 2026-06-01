@@ -71,8 +71,7 @@
                     <h2>Welcome to Mahendra Maheshdev Secondary School, Likhu-6, Nuwakot</h2>
                     <p>Nurturing Minds, Building Futures</p>
                     <p>Computer Engineering</p>
-                    <button class="cta-button primary" onclick="showAlert('Application Form will open shortly!')">Apply
-                        Now</button>
+                    <button class="cta-button primary"><a href="student_admissions.php">Apply Now</a></button>
                 </div>
 
                 <button class="carousel-control prev" onclick="moveCarousel(-1)"><i

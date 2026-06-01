@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <style>
         .form-container {
             max-width: 800px;
@@ -214,51 +214,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-
-
-        <div class="top-bar">
-            <div class="contact-info">
-                <i class="fa-solid fa-phone"></i> +977 9999999999
+    <div id="admin-view">
+       <!-- Sidebar -->
+        <aside class="sidebar" id="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
+                <h2>M.M.S.S</h2></a>
+                
+                <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
-            <div class="contact-info">
-                <i class="fa-solid fa-envelope"></i> info@mahendramaheshdev.edu.np
-            </div>
-        <div class="weather-info" id="weather">
-                Loading weather...
-        </div>
-
-        </div>
-
-        <!-- Navbar -->
-        <nav class="navbar">
-            <a href="index.php">
-                <div class="logo-container">
-                    <img src="assets/logo.png" alt="Logo" class="logo-img">
-                    <div class="logo-text">
-                        <h1>Mahendra Maheshdev</h1>
-                        <p>Secondary School</p>
-                    </div>
-                </div>
-            </a>
-
-
-            <ul class="nav-links">
-                <li><a href="index.php" class="active">Home</a></li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="admissions.php">Admissions</a></li>
-                <li><a href="academics.php">Academics</a></li>
-                <li><a href="team.php">Team</a></li>
-                <li><a href="notices.php">Notices and Results</a></li>
-                <li><a href="gallery.php">Gallery</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
+            <ul class="sidebar-menu">
+                <li><a href="../admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a href="students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
+                <li><a href="../teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
+                <li><a href="std_admission_form_view.php"><i class="fa fa-user-plus"></i> <span>Admissions</span><span id="notification-badge" class="badge hidden"></span></a></li>
+                <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
+                <li><a href="../admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
             </ul>
-        </nav>
+        </aside>
   
 
     <div class="form-container">
         <div class="form-header">
             <div class="logo-container">
-                <img src="assets/logo.png" alt="Logo" class="logo-img">
+                <img src="../assets/logo.png" alt="Logo" class="logo-img">
                 <div class="logo-text">
                     <h1 style="font-size: 1.5rem;">Mahendra Maheshdev Secondary School</h1>
                     <p style="font-size: 1.2rem;">Likhu-6, Nuwakot, Nepal</p>

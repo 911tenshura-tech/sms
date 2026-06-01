@@ -53,7 +53,7 @@
             </header>
 
              <div class="dashboard-content" style="padding: 20px;">
-                <h1 style="margin-bottom: 20px; color: #2c3e50;">Student Hub</h1>
+                <h1 style="margin-bottom: 20px; color: #2c3e50;">Student </h1>
                 <div class="analytics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                     
                     <a href="std_admission_form_view.php" style="text-decoration: none; color: inherit;">
@@ -66,7 +66,7 @@
                         </div>
                     </a>
 
-                    <a href="../student_admissions.php" style="text-decoration: none; color: inherit;">
+                    <a href="add_new_student.php" style="text-decoration: none; color: inherit;">
                         <div class="metric-card" style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
                             <div class="metric-icon" style="font-size: 2rem; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50%;"><i class="fa-solid fa-user-plus"></i></div>
                             <div class="metric-info">
