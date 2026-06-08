@@ -9,10 +9,10 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
     $db_name    = "sms_db";
 
     $conn = new mysqli($servername, $db_user, $db_pass, $db_name);
-        // Check connection BEFORE doing anything with it
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+
 //collect data
   $student_name  = $_POST['student_name']  ?? '';
   $class = $_POST['class'] ?? '';
@@ -20,17 +20,20 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
   $payer_email = $_POST['payer_email'] ?? '';
   $payer_relation = $_POST['payer_relation'] ?? '';
   $fee_type = $_POST['fee_type'] ?? '';
-  $pay_date = $_POST['pay_date'] ?? '';
+  $amount = $_POST['amount'] ?? 0;
 
       // ---- Insert into database ----
-    $sql = "INSERT INTO student_admissions
-                (student_name, class, payer_name, payer_email payer_relation, fee_type, pay_date)
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO fees (student_name, class, payers_name, payers_email, payers_relation, fee_type, amount, status) VALUES (?, ?, ?, ?, ?, ?, ?, 'Pending')";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssssd", $student_name, $class, $payer_name, $payer_email, $payer_relation, $fee_type, $amount);
+    
+    if ($stmt->execute()) {
+        header("Location: pay_fees.php");
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 }
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -218,7 +221,7 @@ input:focus, select:focus {
                     </div>
                     <div class="form-group">
                         <label for="class">Class/Grade</label>
-                        <select id="fee-type" name="fee_type" required>
+                        <select id="class" name="class" required>
                         <option value="" disabled selected>Select Class</option>
                         <option value="class 9 G">Class 9 General</option>
                         <option value="class 10 G">Class 10 General</option>
@@ -263,7 +266,7 @@ input:focus, select:focus {
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn"> <a href="pay_fees.php">Proceed to Pay</a></button>
+            <button type="submit" class="submit-btn">Proceed to Pay</button>
             
         </form>
     </div>

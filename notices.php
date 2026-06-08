@@ -1,3 +1,15 @@
+<?php
+require_once 'connection/db.php';
+$notices = [];
+if (isset($pdo)) {
+    try {
+        $stmt = $pdo->query("SELECT * FROM notices ORDER BY date_posted DESC");
+        $notices = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        // Handle error silently
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +69,6 @@
             </ul>
         </nav>
 
-        <!-- Main Content Area -->
         <main class="public-main">
             <section class="page-header"
                 style="text-align: center; padding: 4rem 2rem; background: var(--secondary-color, #f4f7f6); border-radius: 8px; margin: 2rem;">
@@ -65,6 +76,37 @@
                 <p style="font-size: 1.1rem; color: #666;">Access school resources, notices, and results.</p>
             </section>
         </main>
+
+        <div class="notices-section" style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+            <?php if (empty($notices)): ?>
+                <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px;">
+                    <p style="color: #7f8c8d; font-size: 1.1rem;">No notices or results are available at the moment.</p>
+                </div>
+            <?php else: ?>
+                <div style="display: grid; gap: 20px;">
+                    <?php foreach ($notices as $notice): ?>
+                        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                                <div>
+                                    <span style="background-color: <?php echo ($notice['type'] == 'Result' ? '#2ecc71' : '#3498db'); ?>; color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-right: 10px;">
+                                        <?php echo htmlspecialchars($notice['type']); ?>
+                                    </span>
+                                    <span style="color: #7f8c8d; font-size: 0.9rem;"><i class="fa-regular fa-clock"></i> <?php echo date('M d, Y', strtotime($notice['date_posted'])); ?></span>
+                                </div>
+                            </div>
+                            <h3 style="color: #2c3e50; font-size: 1.4rem; margin-bottom: 10px;"><?php echo htmlspecialchars($notice['title']); ?></h3>
+                            <p style="color: #4a5568; line-height: 1.6; margin-bottom: 15px;"><?php echo nl2br(htmlspecialchars($notice['content'])); ?></p>
+                            
+                            <?php if ($notice['file_path']): ?>
+                                <a href="assets/uploads/notices/<?php echo htmlspecialchars($notice['file_path']); ?>" target="_blank" style="display: inline-block; background-color: #f1f5f9; color: #3b82f6; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">
+                                    <i class="fa-solid fa-download" style="margin-right: 5px;"></i> Download Attachment
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
 
         <div class="fees-section" style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
             <h3>Pay Fees Online</h3>

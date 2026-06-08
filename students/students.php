@@ -19,7 +19,7 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <a href="admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
+                <a href="../admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
                 <h2>M.M.S.S</h2></a>
                 
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
@@ -29,8 +29,8 @@
                 <li class="active"><a href="students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
                 <li><a href="../teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
-                <li><a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
-                <li><a href="#"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
+                <li><a href="../admin_fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
+                <li><a href="../admin_notices.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
                 <li><a href="../admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
             </ul>
         </aside>
@@ -72,6 +72,16 @@
                             <div class="metric-info">
                                 <h3 style="margin: 0; font-size: 1.2rem;">Add New Student</h3>
                                 <p style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9;">Manually register a new student</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="manage_students.php" style="text-decoration: none; color: inherit;">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #f39c12, #d35400); color: white; padding: 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+                            <div class="metric-icon" style="font-size: 2rem; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50%;"><i class="fa-solid fa-user-pen"></i></div>
+                            <div class="metric-info">
+                                <h3 style="margin: 0; font-size: 1.2rem;">Manage Students</h3>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9;">Update or delete student records</p>
                             </div>
                         </div>
                     </a>

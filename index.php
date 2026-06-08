@@ -231,13 +231,8 @@
                     </div>
                 </div>
                 <div class="featured-gallery">
-                    <h3>Featured Gallery</h3>
-                    <div class="gallery-grid">
-                        <div class="gallery-img" style="background-image: url('assets/gallery_1.jpg');"></div>
-                        <div class="gallery-img" style="background-image: url('assets/gallery_2.jpg');"></div>
-                        <div class="gallery-img" style="background-image: url('assets/gallery_3.jpg');"></div>
-                        <div class="gallery-img" style="background-image: url('assets/carousel_2.jpg');"></div>
-                    </div>
+                    <h3>Our Location at google maps</h3>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7054.615015229879!2d85.261621!3d27.8618227!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eadfed10e8b92b%3A0xcc6d99b369602366!2sMahendra%20Maheshdev%20secondary%20school!5e0!3m2!1sen!2snp!4v1780898026227!5m2!1sen!2snp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             <div class="footer-bottom">
