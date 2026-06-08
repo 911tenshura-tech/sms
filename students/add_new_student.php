@@ -75,7 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("MySQL Prepare Error: " . $conn->error);
     }
 
-    // Fix: use $birth_certificate_path (was wrongly $birth_cert_path before)
     $stmt->bind_param(
         "ssssssssssssssssssss",
         $admission_date, $academic_year, $class_applied, $first_name, $middle_name, $last_name,

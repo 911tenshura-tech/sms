@@ -1077,3 +1077,11 @@ button {
         display: none;
     }
 }
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: max-content;
+    margin: 2rem auto;
+    padding: 2rem auto;
+}

@@ -241,7 +241,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Our location: <a href="https://maps.app.goo.gl/SxXacD9EYP2rnC787">Google Maps</a></p><br>
+                <p>Our location: <a href="https://maps.app.goo.gl/SxXacD9EYP2rnC787" style="text-decoration: underline;">Google Maps</a></p><br>
             <h3>Quick Links</h3>
             <ul class="quick_links">
                 <li><a href="index.php" class="active">Home</a></li>

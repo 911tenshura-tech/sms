@@ -1,3 +1,37 @@
+<?php
+
+if($_SERVER['REQUEST_METHOD'] =="POST"){
+
+//db connection
+    $servername = "localhost";
+    $db_user    = "root";
+    $db_pass    = "";
+    $db_name    = "sms_db";
+
+    $conn = new mysqli($servername, $db_user, $db_pass, $db_name);
+        // Check connection BEFORE doing anything with it
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+//collect data
+  $student_name  = $_POST['student_name']  ?? '';
+  $class = $_POST['class'] ?? '';
+  $payer_name = $_POST['payer_name'] ?? '';
+  $payer_email = $_POST['payer_email'] ?? '';
+  $payer_relation = $_POST['payer_relation'] ?? '';
+  $fee_type = $_POST['fee_type'] ?? '';
+  $pay_date = $_POST['pay_date'] ?? '';
+
+      // ---- Insert into database ----
+    $sql = "INSERT INTO student_admissions
+                (student_name, class, payer_name, payer_email payer_relation, fee_type, pay_date)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -233,8 +267,6 @@ input:focus, select:focus {
             
         </form>
     </div>
-    </div>
-   
         <script src="script.js"></script>
 </body>
 </html>

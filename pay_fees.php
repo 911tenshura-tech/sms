@@ -1,3 +1,7 @@
+<?php 
+include 'connection/db.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +28,17 @@
         </div>
         <p style="font-size: 0.95rem; color: #475569; margin-bottom: 12px;">Amount due: <strong>₦0.00</strong></p>
         <button type="button" style="background: #2563eb; color: #fff; border: none; padding: 12px 24px; border-radius: 999px; cursor: pointer; font-size: 0.95rem;">Refresh QR</button>
+
+    <div class="container">
+        <div class="sub-container">
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 12px;">After completing the payment, please upload your transaction proof below.</p>
+             <input type="file" placeholder="Upload transaction proof" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 16px; font-size: 0.95rem;">
+            <button type="button" style="background: #2563eb; color: #fff; border: none; padding: 12px 24px; border-radius: 999px; cursor: pointer; font-size: 0.95rem;">Submit</button>
+
+             <a href="index.php">Back to Home</a>
+        </div>
+   
     </div>
+
 </body>
 </html>
