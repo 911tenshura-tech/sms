@@ -205,8 +205,14 @@ if (isset($pdo)) {
             <div class="contact-info">
                 <i class="fa-solid fa-envelope"></i> info@mahendramaheshdev.edu.np
             </div>
-        <div class="weather-info" id="weather">
-                Loading weather...
+       <div class="date-info" id="date">
+                <?php
+                //date time logic
+                    date_default_timezone_set('Asia/Kathmandu');
+
+                    echo date('F j, Y g:i a'); 
+
+                ?>
         </div>
 
         </div>
