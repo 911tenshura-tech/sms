@@ -86,10 +86,10 @@ if (isset($pdo)) {
                 <li class="active"><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
                 <li><a href="students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
                 <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
-                <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
                 <li><a href="admin_fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
                 <li><a href="admin_notices.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
                 <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
+                <li><a href="index.php"><i class="fa-solid fa-home"></i> <span>Public Site</span></a></li>
             </ul>
         </aside>
 
@@ -113,38 +113,6 @@ if (isset($pdo)) {
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
-
-                <!-- Analytics Cards -->
-                <div class="analytics-grid">
-                    <div class="metric-card primary-gradient">
-                        <div class="metric-icon"><i class="fa-solid fa-users"></i></div>
-                        <div class="metric-info">
-                            <p>Total Students</p>
-                            <h3>452 <span class="trend up">(+5%)</span></h3>
-                        </div>
-                    </div>
-                    <div class="metric-card secondary-gradient">
-                        <div class="metric-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-                        <div class="metric-info">
-                            <p>Total Teachers</p>
-                            <h3><?php echo $total_teachers; ?> <span class="trend"><?php echo $active_teachers; ?> active</span></h3>
-                        </div>
-                    </div>
-                    <!-- <div class="metric-card success-gradient">
-                        <div class="metric-icon"><i class="fa-solid fa-user-plus"></i></div>
-                        <div class="metric-info">
-                            <p>New Admissions</p>
-                            <h3>12 <span class="trend">this month</span></h3>
-                        </div>
-                    </div> -->
-                    <!-- <div class="metric-card warning-gradient">
-                        <div class="metric-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                        <div class="metric-info">
-                            <p>Attendance Today</p>
-                            <h3>94.2% <span class="trend up">good</span></h3>
-                        </div>
-                    </div> -->
-                </div>
 
                 <!-- Main Split Layout -->
                 <div class="dashboard-split">
@@ -206,8 +174,8 @@ if (isset($pdo)) {
                         <!-- Recent Notifications -->
                         <div class="panel">
                             <div class="panel-header">
-                                <h3>Recent Notifications</h3>
-                                <a href="#" class="view-all">View All</a>
+                                <h3>Recent Events and Notices</h3>
+                                <a href="admin_notices.php" class="view-all">View All</a>
                             </div>
                             <div class="timeline">
                                 <div class="timeline-item">
@@ -241,26 +209,6 @@ if (isset($pdo)) {
 
                     <!-- Right Column -->
                     <div class="split-right">
-
-                        <!-- Attendance Overview Chart -->
-                        <div class="panel chart-panel">
-                            <div class="panel-header">
-                                <h3>Today's Attendance</h3>
-                            </div>
-                            <div class="chart-container" style="position: relative; height:250px; width:100%">
-                                <canvas id="attendanceChart"></canvas>
-                            </div>
-                        </div>
-
-                        <!-- Examination Results Chart -->
-                        <div class="panel chart-panel">
-                            <div class="panel-header">
-                                <h3>Examination Results (Average %)</h3>
-                            </div>
-                            <div class="chart-container" style="position: relative; height:300px; width:100%">
-                                <canvas id="resultsChart"></canvas>
-                            </div>
-                        </div>
 
                     </div>
                 </div>

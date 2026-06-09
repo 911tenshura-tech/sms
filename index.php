@@ -66,12 +66,13 @@
                 <div class="carousel-slide active" style="background-image: url('assets/school1.png');"></div>
                 <div class="carousel-slide" style="background-image: url('assets/assembly.jpg');"></div>
                 <div class="carousel-slide" style="background-image: url('assets/scouts.jpg');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/school1.jpg');"></div>
 
                 <div class="carousel-overlay">
                     <h2>Welcome to Mahendra Maheshdev Secondary School, Likhu-6, Nuwakot</h2>
                     <p>Nurturing Minds, Building Futures</p>
                     <p>Computer Engineering</p>
-                    <button class="cta-button primary"><a href="student_admissions.php">Apply Now</a></button>
+                    
                 </div>
 
                 <button class="carousel-control prev" onclick="moveCarousel(-1)"><i
@@ -87,29 +88,35 @@
 
                 <!-- Latest News -->
                 <div class="grid-card news-card">
-                    <h3><i class="fa-regular fa-newspaper"></i> Latest News & Events</h3>
+                    <h3><i class="fa-regular fa-newspaper"></i> Latest News & Notices</h3>
                     <ul class="event-list">
-                        <li>
+                        <!-- <li>
                             <div class="event-date"><span class="day">15</span><span class="month">May</span></div>
                             <div class="event-details">
                                 <h4>Parent-Teacher Meeting</h4>
                                 <p>For classes 8-10. Attendance is mandatory.</p>
                             </div>
-                        </li>
+                        </li> -->
+                      
                         <li>
-                            <div class="event-date"><span class="day">22</span><span class="month">May</span></div>
+                            <div class="event-date"><span class="day">  <?php
+                                $currentDateTime = new DateTime('now', new DateTimeZone('Asia/Kathmandu'));
+
+                                    // Outputs something like: June 9
+                                    echo $currentDateTime->format('j');
+                                    ?></span><span class="month">May</span></div>
                             <div class="event-details">
                                 <h4>Term-End Exam Schedule</h4>
                                 <p>Examinations begin for all secondary classes.</p>
                             </div>
                         </li>
-                        <li>
+                        <!-- <li>
                             <div class="event-date"><span class="day">05</span><span class="month">Jun</span></div>
                             <div class="event-details">
                                 <h4>Environment Day Celebration</h4>
                                 <p>Tree planting program at school premises.</p>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
@@ -216,45 +223,64 @@
             </div>
                 
         </section>
-
-        <!-- Footer -->
-        <footer class="public-footer">
+    <!-- Footer -->
+    <footer class="public-footer">
+        <div class="footer-grid">
+            <div class="principal-message">
+                <img src="assets/principal.jpg" alt="Principal" class="principal-img">
+                <div class="message-content">
+                    <h3>Message from the Principal</h3>
+                    <p>"At Mahendra Maheshdev, we believe in empowering students with knowledge, skills, and values.
+                        Our dedicated team is committed to creating a vibrant learning community where every child
+                        can thrive and achieve their full potential."</p>
+                    <h4>- Madan Shrestha</h4>
+                </div>
+            </div>
+            <div class="featured-gallery">
+                <h3>Featured Gallery</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-img" style="background-image: url('assets/school1.jpg');"></div>
+                    <div class="gallery-img" style="background-image: url('assets/school2.jpg');"></div>
+                    <div class="gallery-img" style="background-image: url('assets/parents.jpg');"></div>
+                    <div class="gallery-img" style="background-image: url('assets/assembly.jpg');"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <div class="footer-grid">
-                <div class="principal-message">
-                    <img src="assets/principal.jpg" alt="Principal" class="principal-img">
-                    <div class="message-content">
-                        <h3>Message from the Principal</h3>
-                        <p>"At Mahendra Maheshdev, we believe in empowering students with knowledge, skills, and values.
-                            Our dedicated team is committed to creating a vibrant learning community where every child
-                            can thrive and achieve their full potential."</p>
-                        <h4>- Madan Shrestha</h4>
-                    </div>
+                <div class="google-location">
+                    <p>Our location: <a href="https://maps.app.goo.gl/SxXacD9EYP2rnC787">Google Maps</a></p><br>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7054.615015229879!2d85.261621!3d27.8618227!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eadfed10e8b92b%3A0xcc6d99b369602366!2sMahendra%20Maheshdev%20secondary%20school!5e0!3m2!1sen!2snp!4v1780984074643!5m2!1sen!2snp"
+                        width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="featured-gallery">
-                    <h3>Our Location at google maps</h3>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7054.615015229879!2d85.261621!3d27.8618227!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eadfed10e8b92b%3A0xcc6d99b369602366!2sMahendra%20Maheshdev%20secondary%20school!5e0!3m2!1sen!2snp!4v1780898026227!5m2!1sen!2snp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <div class="quick-links">
+
+                    <h3>Quick Links</h3>
+                    <ul class="quick_links">
+                        <li><a href="index.php" class="active">Home</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="admissions.php">Admissions</a></li>
+                        <li><a href="academics.php">Academics</a></li>
+                        <li><a href="team.php">Team</a></li>
+                        <li><a href="notices.php">Notices and Results</a></li>
+                        <li><a href="gallery.php">Gallery</a></li>
+                        <li><a href="contact.php">Contact Us</a></li>
+
+
+                        <div class="portal-link">
+                            <a href="login.php"><i class="fa-solid fa-user-lock"></i> Admin Portal</a>
+                        </div>
                 </div>
+                </ul>
             </div>
-            <div class="footer-bottom">
-                <p>Our location: <a href="https://maps.app.goo.gl/SxXacD9EYP2rnC787" style="text-decoration: underline;">Google Maps</a></p><br>
-            <h3>Quick Links</h3>
-            <ul class="quick_links">
-                <li><a href="index.php" class="active">Home</a></li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="admissions.php">Admissions</a></li>
-                <li><a href="academics.php">Academics</a></li>
-                <li><a href="team.php">Team</a></li>
-                <li><a href="notices.php">Notices and Results</a></li>
-                <li><a href="gallery.php">Gallery</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
-            </ul>
-                <p>&copy; 2026 Mahendra Maheshdev Secondary School, Likhu Rural Municipality Ward no. 6, Nuwakot, Nepal.
-                    All Rights Reserved.</p>
-                <div class="portal-link">
-                   <a href="login.php"><i class="fa-solid fa-user-lock"></i> Admin Portal</a>
-                </div>
-            </div>
-        </footer>
+            <p>&copy; 2026 Mahendra Maheshdev Secondary School, Likhu Rural Municipality Ward no. 6, Nuwakot, Nepal.
+                All Rights Reserved.</p>
+
+        </div>
+    </footer>
     </div>
 
 

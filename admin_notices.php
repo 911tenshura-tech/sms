@@ -78,31 +78,37 @@ if (isset($pdo)) {
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css?v=1.1">
     <style>
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .submit-btn {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .submit-btn:hover {
-            background-color: #2980b9;
-        }
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .submit-btn {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background-color: #2980b9;
+    }
     </style>
 </head>
 
@@ -113,17 +119,21 @@ if (isset($pdo)) {
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
                 <a href="admin.php"><img src="assets/logo.png" alt="Logo" class="logo-img small">
-                <h2>M.M.S.S</h2></a>
+                    <h2>M.M.S.S</h2>
+                </a>
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
             <ul class="sidebar-menu">
-                <li><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+                <li><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a>
+                </li>
                 <li><a href="students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
-                <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
-                <li><a href="#"><i class="fa-solid fa-file-signature"></i> <span>Examination</span></a></li>
+                <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i>
+                        <span>Teachers</span></a></li>
                 <li><a href="admin_fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
-                <li class="active"><a href="admin_notices.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
+                <li class="active"><a href="admin_notices.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and
+                            Results</span></a></li>
                 <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
+                <li><a href="index.php"><i class="fa-solid fa-home"></i> <span>Public Site</span></a></li>
             </ul>
         </aside>
 
@@ -140,7 +150,8 @@ if (isset($pdo)) {
                     <div class="admin-profile">
                         <img src="assets/principal.jpg" alt="Admin" class="avatar">
                         <span class="admin-name">Admin User</span>
-                        <button class="logout-btn" onclick="location.href='logout.php'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                        <button class="logout-btn" onclick="location.href='logout.php'"><i
+                                class="fa-solid fa-right-from-bracket"></i> Logout</button>
                     </div>
                 </div>
             </header>
@@ -148,17 +159,23 @@ if (isset($pdo)) {
             <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <?php if (isset($error)): ?>
-                    <div class="alert" style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 4px;"><?php echo htmlspecialchars($error); ?></div>
+                <div class="alert"
+                    style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 4px;">
+                    <?php echo htmlspecialchars($error); ?></div>
                 <?php endif; ?>
                 <?php if (isset($_GET['msg']) && $_GET['msg'] == 'added'): ?>
-                    <div class="alert" style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 20px; border-radius: 4px;">Notice added successfully!</div>
+                <div class="alert"
+                    style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 20px; border-radius: 4px;">
+                    Notice added successfully!</div>
                 <?php endif; ?>
                 <?php if (isset($_GET['msg']) && $_GET['msg'] == 'deleted'): ?>
-                    <div class="alert" style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 20px; border-radius: 4px;">Notice deleted successfully!</div>
+                <div class="alert"
+                    style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 20px; border-radius: 4px;">
+                    Notice deleted successfully!</div>
                 <?php endif; ?>
 
                 <div class="dashboard-split" style="display: flex; gap: 20px; flex-wrap: wrap;">
-                    
+
                     <!-- Left: Add Notice Form -->
                     <div class="panel" style="flex: 1; min-width: 300px;">
                         <div class="panel-header">
@@ -166,12 +183,12 @@ if (isset($pdo)) {
                         </div>
                         <form action="admin_notices.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="action" value="add">
-                            
+
                             <div class="form-group">
                                 <label for="title">Title *</label>
                                 <input type="text" id="title" name="title" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="type">Type *</label>
                                 <select id="type" name="type" required>
@@ -180,7 +197,7 @@ if (isset($pdo)) {
                                     <option value="Event">Event</option>
                                 </select>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="content">Content/Description *</label>
                                 <textarea id="content" name="content" rows="4" required></textarea>
@@ -190,7 +207,7 @@ if (isset($pdo)) {
                                 <label for="file">Attachment (Optional)</label>
                                 <input type="file" id="file" name="file">
                             </div>
-                            
+
                             <button type="submit" class="submit-btn"><i class="fa-solid fa-plus"></i> Add Item</button>
                         </form>
                     </div>
@@ -213,33 +230,43 @@ if (isset($pdo)) {
                                 </thead>
                                 <tbody>
                                     <?php if (empty($notices)): ?>
-                                        <tr>
-                                            <td colspan="5" style="text-align: center; color: #7f8c8d; padding: 20px;">No records found.</td>
-                                        </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center; color: #7f8c8d; padding: 20px;">No
+                                            records found.</td>
+                                    </tr>
                                     <?php else: ?>
-                                        <?php foreach ($notices as $notice): ?>
-                                            <tr style="border-bottom: 1px solid #eee;">
-                                                <td style="padding: 10px;"><?php echo date('M d, Y', strtotime($notice['date_posted'])); ?></td>
-                                                <td style="padding: 10px;"><span class="badge" style="background-color: <?php echo ($notice['type'] == 'Result' ? '#2ecc71' : '#3498db'); ?>; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em;"><?php echo htmlspecialchars($notice['type']); ?></span></td>
-                                                <td style="padding: 10px;"><strong><?php echo htmlspecialchars($notice['title']); ?></strong></td>
-                                                <td style="padding: 10px;">
-                                                    <?php if ($notice['file_path']): ?>
-                                                        <a href="assets/uploads/notices/<?php echo htmlspecialchars($notice['file_path']); ?>" target="_blank" style="color: #3498db;"><i class="fa-solid fa-paperclip"></i> View</a>
-                                                    <?php else: ?>
-                                                        -
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td style="padding: 10px;">
-                                                    <a href="admin_notices.php?delete=<?php echo $notice['id']; ?>" onclick="return confirm('Are you sure you want to delete this?');" style="color: #e74c3c; text-decoration: none;"><i class="fa-solid fa-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                    <?php foreach ($notices as $notice): ?>
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 10px;">
+                                            <?php echo date('M d, Y', strtotime($notice['date_posted'])); ?></td>
+                                        <td style="padding: 10px;"><span class="badge"
+                                                style="background-color: <?php echo ($notice['type'] == 'Result' ? '#2ecc71' : '#3498db'); ?>; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em;"><?php echo htmlspecialchars($notice['type']); ?></span>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <strong><?php echo htmlspecialchars($notice['title']); ?></strong></td>
+                                        <td style="padding: 10px;">
+                                            <?php if ($notice['file_path']): ?>
+                                            <a href="assets/uploads/notices/<?php echo htmlspecialchars($notice['file_path']); ?>"
+                                                target="_blank" style="color: #3498db;"><i
+                                                    class="fa-solid fa-paperclip"></i> View</a>
+                                            <?php else: ?>
+                                            -
+                                            <?php endif; ?>
+                                        </td>
+                                        <td style="padding: 10px;">
+                                            <a href="admin_notices.php?delete=<?php echo $notice['id']; ?>"
+                                                onclick="return confirm('Are you sure you want to delete this?');"
+                                                style="color: #e74c3c; text-decoration: none;"><i
+                                                    class="fa-solid fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -247,4 +274,5 @@ if (isset($pdo)) {
     <!-- Custom JS -->
     <script src="script.js?v=1.1"></script>
 </body>
+
 </html>
