@@ -76,7 +76,7 @@
 
                 <div class="carousel-overlay">
                     <h2>Welcome to Mahendra Maheshdev Secondary School, Likhu-6, Nuwakot</h2>
-                    <p>Nurturing Minds, Building Futures</p>
+                    <p>Educating Minds, Building Futures</p>
                     <p>Computer Engineering</p>
                     
                 </div>

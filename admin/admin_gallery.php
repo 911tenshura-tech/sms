@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header("Location: login.php");
     exit;
 }
-require_once 'connection/db.php';
+require_once '../connection/db.php';
 
 $success_msg = '';
 $error_msg = '';
@@ -19,7 +19,7 @@ if (isset($_GET['delete_id'])) {
 
         if ($item) {
             // Delete physical file
-            $file_path = 'assets/uploads/gallery/' . $item['file_name'];
+            $file_path = '../assets/uploads/gallery/' . $item['file_name'];
             if (file_exists($file_path)) {
                 unlink($file_path);
             }
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             // Unique file name
             $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-            $uploadFileDir = 'assets/uploads/gallery/';
+            $uploadFileDir = '../assets/uploads/gallery/';
             $dest_path = $uploadFileDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
@@ -107,7 +107,7 @@ try {
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="stylesheet" href="../style.css?v=1.2">
     <style>
         .split-layout {
             display: grid;
@@ -302,19 +302,19 @@ try {
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <a href="admin.php"><img src="assets/logo.png" alt="Logo" class="logo-img small">
+                <a href="admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
                 <h2>M.M.S.S</h2></a>
                 
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
              <ul class="sidebar-menu">
                 <li><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
-                <li><a href="students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
-                <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+                <li><a href="../students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
+                <li><a href="../teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="admin_fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
                 <li><a href="admin_notices.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
                 <li class="active"><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
-                <li><a href="index.php"><i class="fa-solid fa-home"></i> <span>Public Site</span></a></li>
+                <li><a href="../index.php"><i class="fa-solid fa-home"></i> <span>Public Site</span></a></li>
             </ul>
         </aside>
 
@@ -391,9 +391,9 @@ try {
                                     <div class="media-card">
                                         <div class="media-preview-container">
                                             <?php if ($media['file_type'] === 'image'): ?>
-                                                <img src="assets/uploads/gallery/<?php echo htmlspecialchars($media['file_name']); ?>" alt="<?php echo htmlspecialchars($media['title']); ?>">
+                                                <img src="../assets/uploads/gallery/<?php echo htmlspecialchars($media['file_name']); ?>" alt="<?php echo htmlspecialchars($media['title']); ?>">
                                             <?php else: ?>
-                                                <video src="assets/uploads/gallery/<?php echo htmlspecialchars($media['file_name']); ?>" muted preload="metadata"></video>
+                                                <video src="../assets/uploads/gallery/<?php echo htmlspecialchars($media['file_name']); ?>" muted preload="metadata"></video>
                                                 <!-- Video Overlay Icon -->
                                                 <div style="position: absolute; font-size: 1.8rem; color: white; background: rgba(0,0,0,0.4); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none;">
                                                     <i class="fa-solid fa-play"></i>
@@ -425,7 +425,7 @@ try {
     </div>
 
     <!-- Custom JS -->
-    <script src="script.js?v=1.1"></script>
+    <script src="../script.js?v=1.1"></script>
 </body>
 
 </html>

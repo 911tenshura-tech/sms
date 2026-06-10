@@ -83,7 +83,40 @@ if (isset($pdo)) {
             <p style="font-size: 1.1rem; color: #666;">Access school resources, notices, and results.</p>
         </section>
     </main>
+<?php
+// view.php
+function viewDocument(){
+    if (isset($_GET['file'])) {
+    // Sanitize the file_name to prevent Directory Traversal attacks (e.g., passing ../../etc/passwd)
+    $file_name = basename($_GET['file']); 
+    $file_path = 'assets/uploads/notices/' . $file_name;
 
+    // Check if the file actually exists on the server
+    if (file_exists($file_path)) {
+        
+        // Get the correct MIME type dynamically (e.g., application/pdf, image/jpeg)
+        $mimeType = mime_content_type($file_path);
+        
+        // Set HTTP headers to tell the browser how to handle the file
+        header("Content-Type: " . $mimeType);
+        
+        // "inline" opens it in the browser window. change to "attachment" to force a download.
+        header("Content-Disposition: inline; file_name=\"" . $file_name . "\"");
+        header("Content-Length: " . filesize($file_path));
+        
+        // Clear system output buffer to prevent file corruption
+        ob_clean();
+        flush();
+        
+        // Read the file and stream it to the user
+        readfile($file_path);
+        exit;
+    } else {
+        echo "Error: File not found.";
+    }
+}
+}
+?>
     <div class="notices-section" style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
         <?php if (empty($notices)): ?>
         <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px;">
@@ -114,6 +147,8 @@ if (isset($pdo)) {
                 <a href="assets/uploads/notices/<?php echo htmlspecialchars($notice['file_path']); ?>" target="_blank"
                     style="display: inline-block; background-color: #f1f5f9; color: #3b82f6; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">
                     <i class="fa-solid fa-download" style="margin-right: 5px;"></i> Download Attachment
+                    <?php viewDocument(); ?>
+                    <i class="fa-solid fa-eye" style="margin-right: 3px; margin-left: 10px;"></i> View Attachment
                 </a>
                 <?php endif; ?>
             </div>

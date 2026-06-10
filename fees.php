@@ -184,12 +184,12 @@ input:focus, select:focus {
 
 
             <ul class="nav-links">
-                <li><a href="index.php" class="active">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About Us</a></li>
                 <li><a href="admissions.php">Admissions</a></li>
                 <li><a href="academics.php">Academics</a></li>
                 <li><a href="team.php">Team</a></li>
-                <li><a href="notices.php">Notices and Results</a></li>
+                <li><a href="notices.php" class="active">Notices and Results</a></li>
                 <li><a href="gallery.php">Gallery</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
             </ul>
@@ -268,7 +268,7 @@ input:focus, select:focus {
 
                 <div class="input-group">
                     <label for="amount">Amount to Pay (NPR) *</label>
-                    <input type="number" id="amount" name="amount" min="1" placeholder="Enter amount" required>
+                    <input type="number" id="amount" name="amount" min="100" placeholder="Enter amount" required>
                 </div>
             </div>
 

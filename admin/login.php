@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'connection/db.php';
+require_once '../connection/db.php';
 
 $error_msg = '';
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="stylesheet" href="../style.css?v=1.2">
     <style>
         body {
             background-color: var(--sidebar-bg);
@@ -136,9 +136,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
     <div class="login-container">
-        <img src="assets/logo.png" alt="Logo" class="login-logo">
+        <img src="../assets/logo.png" alt="Logo" class="login-logo">
         <h2>Admin Portal</h2>
-        <p>Sign in to manage your school system</p>
+        <p>Sign in to admin dashboard</p>
 
         <?php if(!empty($error_msg)): ?>
             <div class="alert"><i class="fa-solid fa-circle-exclamation"></i> <?php echo htmlspecialchars($error_msg); ?></div>

@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header("Location: login.php");
     exit;
 }
-require_once 'connection/db.php';
+require_once '../connection/db.php';
 
 // Fetch Statistics
 $total_teachers = 0;
@@ -43,7 +43,7 @@ if (isset($pdo)) {
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="../style.css?v=1.1">
     <style>
         .nav-link {
     position: relative;
@@ -77,15 +77,15 @@ if (isset($pdo)) {
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <a href="admin.php"><img src="assets/logo.png" alt="Logo" class="logo-img small">
+                <a href="admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
                 <h2>M.M.S.S</h2></a>
                 
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
             <ul class="sidebar-menu">
                 <li class="active"><a href="admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
-                <li><a href="students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
-                <li><a href="teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+                <li><a href="../students/students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
+                <li><a href="../teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
                 <li><a href="admin_fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
                 <li><a href="admin_notices.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
                 <li><a href="admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
@@ -220,28 +220,6 @@ if (isset($pdo)) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom JS -->
     <script src="script.js?v=1.1"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const badge = document.getElementById("notification-badge");
-
-            function checkNewAdmissions() {
-                // Points to the micro API checking database flags
-                fetch('students/check_notification.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.unread_count > 0) {
-                            badge.classList.remove('hidden');
-                        } else {
-                            badge.classList.add('hidden');
-                        }
-                    })
-                    .catch(error => console.error('Notification error:', error));
-            }
-
-            checkNewAdmissions();
-            setInterval(checkNewAdmissions, 10000); // Check every 10 seconds
-        });
-    </script>
 </body>
 
 </html>
