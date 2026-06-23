@@ -52,11 +52,34 @@ $admissions = [];
 </head>
 <body>
     
-<div class="panel-container">
-    <h2>Mahendra Maheshdev Secondary School - Applicant Dashboard</h2>
-    <div class="table-responsive">
-    <table>
-        <thead>
+<div id="admin-view">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="admin-sidebar">
+        <div class="sidebar-header">
+            <a href="../admin/admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
+                <h2>M.M.S.S</h2>
+            </a>
+            <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="../admin/admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+            <li class="active"><a href="students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
+            <li><a href="../teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
+            <li><a href="../admin/admin_fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
+            <li><a href="../admin_notices.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
+            <li><a href="../admin/admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
+            <li><a href="../index.php"><i class="fa-solid fa-home"></i> <span>Public Site</span></a></li>
+        </ul>
+    </aside>
+
+    <div class="admin-main-wrapper" style="padding: 20px;">
+        <a href="students.php" style="text-decoration: none; color: #3498db; margin-bottom: 20px; display: inline-block;">&larr; Back to Students Dashboard</a>
+        <div class="panel-container" style="max-width: 100%; margin: 0;">
+            <h2>Mahendra Maheshdev Secondary School - Applicant Dashboard</h2>
+            <div class="table-responsive">
+            <table>
+                <thead>
             <tr>
                 <th>ID</th>
                 <th>Admission Date</th>
@@ -150,6 +173,10 @@ $admissions = [];
     }
 </script>
 
+    </div>
+</div>
+</div>
+<script src="../script.js"></script>
 </body>
 </html>
 <?php

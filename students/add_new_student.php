@@ -4,7 +4,10 @@
 // -------------------------------------------------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // DB connection
+    require_once '../connection/db.php';
+    
+    // Fallback if db.php uses PDO and we need mysqli (since the rest of this page uses mysqli)
+    // Actually, it's better to just reuse the connection details.
     $servername = "localhost";
     $db_user    = "root";
     $db_pass    = "";
@@ -12,13 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $conn = new mysqli($servername, $db_user, $db_pass, $db_name);
 
-    // Check connection BEFORE doing anything with it
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
     // ---- File upload handling ----
-    $upload_dir = __DIR__ . "/assets/uploads/students/";
+    $upload_dir = __DIR__ . "/../assets/uploads/students/";
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0755, true);
     }
@@ -67,8 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 (admission_date, academic_year, class_applied, first_name, middle_name, last_name,
                  dob, gender, student_email, student_phone, address, parent_name, parent_relation,
                  parent_phone, parent_email, prev_school, prev_grade, prev_gpa,
-                 birth_certificate, marksheet)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                 birth_certificate, marksheet, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'read')";
 
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
@@ -87,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
         $conn->close();
         // Redirect with success — only called once
-        header("Location: student_admissions.php?msg=success");
+        header("Location: students.php?msg=success");
         exit;
     } else {
         $error_msg = "Submission Error: " . $stmt->error;
@@ -223,12 +225,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             </div>
              <ul class="sidebar-menu">
-                <li><a href="../admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
+                <li><a href="../admin/admin.php"><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></a></li>
                 <li class="active"><a href="students.php"><i class="fa-solid fa-users"></i> <span>Students</span></a></li>
                 <li><a href="../teachers/teachers.php"><i class="fa-solid fa-chalkboard-user"></i> <span>Teachers</span></a></li>
-                <li><a href="../admin_fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
-                <li><a href="../about.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
-                <li><a href="../admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
+                <li><a href="../admin/admin_fees.php"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Fees</span></a></li>
+                <li><a href="../admin/admin_notices.php"><i class="fa-solid fa-calendar-days"></i> <span>Notices and Results</span></a></li>
+                <li><a href="../admin/admin_gallery.php"><i class="fa-solid fa-images"></i> <span>Gallery</span></a></li>
                 <li><a href="../index.php"><i class="fa-solid fa-home"></i> <span>Public Site</span></a></li>
             </ul>
         </aside>
@@ -261,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <!-- enctype is required for file uploads -->
-        <form action="student_admissions.php" method="POST" enctype="multipart/form-data">
+        <form action="add_new_student.php" method="POST" enctype="multipart/form-data">
 
             <div class="form-section">
                 <div class="section-title">1. Academic Details</div>

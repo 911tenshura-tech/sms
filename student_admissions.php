@@ -67,8 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 (admission_date, academic_year, class_applied, first_name, middle_name, last_name,
                  dob, gender, student_email, student_phone, address, parent_name, parent_relation,
                  parent_phone, parent_email, prev_school, prev_grade, prev_gpa,
-                 birth_certificate, marksheet)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                 birth_certificate, marksheet, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'unread')";
 
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
