@@ -228,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 //date time logic
                     date_default_timezone_set('Asia/Kathmandu');
 
-                    echo date('F j, Y g:i a'); 
+                   echo date('F j, Y '); 
 
                 ?>
         </div>

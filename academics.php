@@ -30,7 +30,7 @@
                 //date time logic
                     date_default_timezone_set('Asia/Kathmandu');
 
-                    echo date('F j, Y g:i a'); 
+                    echo date('F j, Y ');  
 
                 ?>
         </div>
@@ -154,7 +154,7 @@
 
 
                         <div class="portal-link">
-                            <a href="login.php"><i class="fa-solid fa-user-lock"></i> Admin Portal</a>
+                            <a href="admin/login.php"><i class="fa-solid fa-user-lock"></i> Admin Portal</a>
                         </div>
                 </div>
                 </ul>

@@ -118,7 +118,7 @@ if (isset($pdo)) {
         <!-- Sidebar -->
         <aside class="sidebar" id="admin-sidebar">
             <div class="sidebar-header">
-                <a href="admin.php"><img src="assets/logo.png" alt="Logo" class="logo-img small">
+                <a href="admin.php"><img src="../assets/logo.png" alt="Logo" class="logo-img small">
                     <h2>M.M.S.S</h2>
                 </a>
                 <button class="toggle-sidebar" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
